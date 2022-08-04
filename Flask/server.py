@@ -44,7 +44,7 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 # 支持的文件格式
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}  # 集合类型
 # 可以限制上传文件的大小
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 #16MB
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
 
 
 # 判断文件名是否是我们支持的格式
@@ -63,6 +63,33 @@ def upload():
         return 'info is ' + request.form.get('info', '') + '. success'
     else:
         return 'failed'
+
+
+@app.route('/user/<username>')
+def user(username):
+    print(username)
+    print(type(username))
+    return 'hello ' + username
+
+
+@app.route('/user/<username>/friends')
+def user_friends(username):
+    print(username)
+    print(type(username))
+    return 'hello ' + username
+
+@app.route('/page/<int:num>')
+def page(num):
+    print(num)
+    print(type(num))
+    return 'hello world'
+
+
+@app.route('/pages/<int:num1>-<int:num2>')
+def pages(num1, num2):
+    print(num1)
+    print(num2)
+    return 'hello world'
 
 
 if __name__ == '__main__':
